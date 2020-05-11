@@ -1,0 +1,15 @@
+新建用户组 新建用户 修改目录执行权限
+修改network
+/etc/security/limits.conf下新增(esuser是新建的用户名)
+esuser soft nofile 65536
+esuser hard nofile 65536
+esuser soft nproc 4096
+esuser hard nproc 4096
+进入/etc/security/limits.d目录下的.conf修改配置文件
+vim /etc/security/limits.d/20-nproc.conf修改为esuser soft nproc 4096
+vim /etc/sysctl.conf
+vm.max_map_count=655360
+执行以下命令生效：sysctl -p
+关闭防火墙
+设置完需要重启
+
